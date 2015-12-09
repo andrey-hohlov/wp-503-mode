@@ -1,0 +1,14 @@
+# OS or Editor folders, extensions #
+.idea
+.cache
+.DS_Store
+.project
+.settings
+Thumbs.db
+*.log
+#*.conf
+*.exe
+*.*~
+*zip
+*gz
+*tar
