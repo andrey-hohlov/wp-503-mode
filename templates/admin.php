@@ -13,10 +13,10 @@
                 <th scope="row">Status</th>
                 <td>
                     <p>
-                        <label><input type="radio" name="options[status]" value="0" <?php checked($this->settings['status'], 0); ?>> On</label><br>
+                        <label><input type="radio" name="options[status]" value="0" <?php checked($this->settings['status'], 0); ?>> Off</label><br>
                     </p>
                     <p>
-                        <label><input type="radio" name="options[status]" value="1" <?php checked($this->settings['status'], 1); ?>> Off</label>
+                        <label><input type="radio" name="options[status]" value="1" <?php checked($this->settings['status'], 1); ?>> On</label>
                     </p>
                 </td>
             </tr>

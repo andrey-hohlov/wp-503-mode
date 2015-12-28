@@ -36,7 +36,9 @@ function wpMntActivate() {
     update_option(WPMNT_OPTION, $options, false);
 }
 
-function wpMntDeactivate() {}
+function wpMntDeactivate() {
+    delete_option(WPMNT_OPTION);
+}
 
 /**
  * Init plugin
