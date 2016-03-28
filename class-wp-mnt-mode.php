@@ -87,12 +87,16 @@ class MntMode {
 
         if ( is_super_admin() ) return true;
 
-        $role = $this->settings['access'];
+        $accessRoles = $this->settings['access'];
         $user = wp_get_current_user();
 
-        if( !$user || !$role ) return false;
+        if( !$user || empty($accessRoles) ) return false;
 
-        return in_array( $role, (array) $user->roles );
+        foreach ($user->roles as $userRole) {
+            if (in_array($userRole, (array) $accessRoles)) return true;
+        }
+
+        return false;
 
     }
 
@@ -157,7 +161,6 @@ class MntMode {
             }
 
             $_POST['options']['status'] = (int) $_POST['options']['status'];
-            $_POST['options']['access'] = sanitize_text_field($_POST['options']['access']);
 
             if (!empty($_POST['options']['exclude'])) {
                 $exclude_array = explode("\n", $_POST['options']['exclude']);

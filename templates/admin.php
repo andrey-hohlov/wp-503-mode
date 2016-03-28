@@ -21,23 +21,23 @@
                 </td>
             </tr>
             <tr>
-                <th scope="row">
-                    <label for="options[access]">Access</label>
-                </th>
+                <th scope="row">Access for roles</th>
                 <td>
-                    <select name="options[access]">
-                        <?php
-                        global $wp_roles;
-                        foreach ($wp_roles->roles as $role => $details) { ?>
-                            <option value="<?php echo esc_attr($role); ?>" <?php selected($this->settings['access'], $role); ?>><?php echo $details['name'] . ' (' . $role . ')'; ?></option>
-                        <?php } ?>
-                    </select>
+                    <?php
+                    global $wp_roles;
+                    foreach ($wp_roles->roles as $role => $details) { ?>
+                        <p>
+                            <label>
+                                <input type="checkbox" name="options[access][]" value="<?php echo esc_attr($role); ?>"
+                                    <?php checked( in_array($role, $this->settings['access']), true ); ?>>
+                                <?php echo $details['name'] . ' (' . $role . ')'; ?>
+                            </label>
+                        </p>
+                    <?php } ?>
                 </td>
             </tr>
             <tr>
-                <th scope="row">
-                    <label for="options[exclude]">Excluded urls</label>
-                </th>
+                <th scope="row">Excluded urls</th>
                 <td>
                     <textarea rows="7" name="options[exclude]" class="large-text code"><?php
                         if (!empty($this->settings['exclude']) && is_array($this->settings['exclude'])) {
