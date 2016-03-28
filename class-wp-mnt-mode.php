@@ -82,19 +82,18 @@ class MntMode {
     }
 
     public function checkUserRole() {
-        $is_allowed = false;
 
-        if (is_super_admin()) {
-            $is_allowed = true;
-        }
+        if ( !is_user_logged_in() ) return false;
+
+        if ( is_super_admin() ) return true;
 
         $role = $this->settings['access'];
+        $user = wp_get_current_user();
 
-        if (current_user_can($role)) {
-            $is_allowed = true;
-        }
+        if( !$user || !$role ) return false;
 
-        return $is_allowed;
+        return in_array( $role, (array) $user->roles );
+
     }
 
     public function checkExclude() {
