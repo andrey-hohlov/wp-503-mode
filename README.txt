@@ -1,4 +1,4 @@
-=== WP Maintenance mode ===
+=== WP 503 mode ===
 Version: 0.0.3
 Requires at least: 3.0.1
 Tested up to: 4.3
