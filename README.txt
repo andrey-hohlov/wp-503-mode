@@ -1,4 +1,4 @@
-=== WP Mnt Mode ===
+=== WP Maintenance mode ===
 Version: 0.0.2
 Requires at least: 3.0.1
 Tested up to: 4.3
