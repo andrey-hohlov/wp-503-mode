@@ -13,10 +13,10 @@
                 <th scope="row">Status</th>
                 <td>
                     <p>
-                        <label><input type="radio" name="options[status]" value="0" <?php checked($this->settings['status'], 0); ?>> Off</label><br>
+                        <label><input type="radio" name="options[status]" value="0" <?php checked($settings['status'], 0); ?>> Off</label><br>
                     </p>
                     <p>
-                        <label><input type="radio" name="options[status]" value="1" <?php checked($this->settings['status'], 1); ?>> On</label>
+                        <label><input type="radio" name="options[status]" value="1" <?php checked($settings['status'], 1); ?>> On</label>
                     </p>
                 </td>
             </tr>
@@ -29,7 +29,7 @@
                         <p>
                             <label>
                                 <input type="checkbox" name="options[access][]" value="<?php echo esc_attr($role); ?>"
-                                    <?php checked( in_array($role, $this->settings['access']), true ); ?>>
+                                    <?php checked( in_array($role, $settings['access']), true ); ?>>
                                 <?php echo $details['name'] . ' (' . $role . ')'; ?>
                             </label>
                         </p>
@@ -40,8 +40,8 @@
                 <th scope="row">Excluded urls</th>
                 <td>
                     <textarea rows="7" name="options[exclude]" class="large-text code"><?php
-                        if (!empty($this->settings['exclude']) && is_array($this->settings['exclude'])) {
-                            echo implode("\n", stripslashes_deep($this->settings['exclude']));
+                        if (!empty($settings['exclude']) && is_array($settings['exclude'])) {
+                            echo implode("\n", stripslashes_deep($settings['exclude']));
                         }
                         ?></textarea>
                     <p class="description">Allow access to the URL at the maintenance mode. Each URL on a new line, with no domain (/path/to/page/).</p>
@@ -50,7 +50,7 @@
             </tbody>
         </table>
 
-        <?php wp_nonce_field('wpMntMode'); ?>
+        <?php wp_nonce_field(WP_503_NONCE); ?>
 
         <p class="submit">
             <input type="submit" name="submit" id="submit" class="button button-primary" value="Save">
