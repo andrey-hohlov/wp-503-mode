@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Plugin Name:         WP Mnt Mode
+ * Plugin Name:         WP Maintenance mode
  * Plugin URI:          http://hohlov.pro
  * Description:         Maintenance mode for WP
- * Version:             0.0.2
+ * Version:             0.0.3
  * Author:              Andrey Hohlov
  * Author URI:          http://hohlov.pro/
  * License:             MIT
  * License URI:         http://opensource.org/licenses/MIT
- * Text Domain:         wp-mnt-mode
+ * Text Domain:         wp-maintenance-mode
  * Domain Path:         /languages
  */
 
@@ -18,32 +18,32 @@ if (!defined('WPINC')) {
     die;
 }
 
-define('WPMNT_PATH', plugin_dir_path( __FILE__ ));
-define('WPMNT_OPTION', 'wpMnt');
+define('WP_MAINTENANCE_PATH', plugin_dir_path( __FILE__ ));
+define('WP_MAINTENANCE_OPTION', 'wp_maintenance');
 
 
 /**
  * Activation and deactivation
  */
 
-register_activation_hook( __FILE__, 'wpMntActivate');
-register_deactivation_hook( __FILE__, 'wpMntDeactivate');
-
-function wpMntActivate() {
+register_activation_hook( __FILE__, 'maintenanceModeActivate');
+function maintenanceModeActivate() {
     $options = array();
     $options['status'] = 0;
     $options['access'] = 'administrator';
     update_option(WPMNT_OPTION, $options, false);
 }
 
-function wpMntDeactivate() {
+register_deactivation_hook( __FILE__, 'maintenanceModeDeactivate');
+function maintenanceModeDeactivate() {
     delete_option(WPMNT_OPTION);
 }
+
 
 /**
  * Init plugin
  */
 
-require WPMNT_PATH . 'class-wp-mnt-mode.php';
+require WPMNT_PATH . 'class-wp-maintenance-mode.php';
 
-MntMode::getInstance();
+MaintenanceMode::getInstance();

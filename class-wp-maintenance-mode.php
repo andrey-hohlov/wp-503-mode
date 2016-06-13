@@ -1,6 +1,6 @@
 <?php
 
-class MntMode {
+class MaintenanceMode {
 
     protected static $instance = null;
     protected $settings;
@@ -121,7 +121,6 @@ class MntMode {
      */
 
     public function createAdminPage() {
-        //$this->adminScreen = add_menu_page( 'My WP Tools', 'My WP Tools', 'edit_others_posts', 'my_tools', array(&$this, 'adminPageTemplate'), 'dashicons-admin-tools', 99);
         $this->adminScreen = add_options_page( 'Режим обслуживания', 'Режим обслуживания', 'edit_others_posts', $this->settingsPageSlug, array(&$this, 'adminPageTemplate'));
     }
 
