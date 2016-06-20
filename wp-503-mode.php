@@ -30,9 +30,10 @@ define('WP_503_PAGE_SLUG', 'maintenance-mode');
 
 register_activation_hook( __FILE__, 'maintenanceModeActivate');
 function maintenanceModeActivate() {
-    $options = array();
-    $options['status'] = 0;
-    $options['access'] = ['administrator'];
+    $options = array(
+        'status' => 0,
+        'access' => array('administrator')
+    );
     update_option(WP_503_OPTION, $options, false);
 }
 
